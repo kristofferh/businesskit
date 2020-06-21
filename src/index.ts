@@ -1,3 +1,3 @@
-export default function () {
-  console.log("hi");
-}
+import { Loader } from "./components";
+
+export { Loader };
