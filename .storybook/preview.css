@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+}
+
+.preview {
+  width: 100%;
+  min-height: 100%;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.darkmode {
+  
+}
