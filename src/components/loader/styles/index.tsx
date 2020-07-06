@@ -3,28 +3,25 @@ import styled from "@emotion/styled";
 
 export const buttonSpin = keyframes`
   from {
-    transform: translate(-50%, -50%) rotate(0deg);
-    transform-origin: center center;
+    transform: rotate(0deg);
   }
 
   to {
-    transform: translate(-50%, -50%) rotate(360deg);
-    transform-origin: center center;
+    transform: rotate(360deg);
   }
 `;
 
 export const dash = keyframes`
   0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
+    stroke-dashoffset: 180;
   }
   50% {
-    stroke-dasharray: 100;
-    stroke-dashoffset: -35px;
+    stroke-dashoffset: 110;
+    transform: rotate(135deg);
   }
   100% {
-    stroke-dasharray: 200;
-    stroke-dashoffset: -100px;
+    stroke-dashoffset: 180;
+    transform: rotate(360deg);
   }
 `;
 
@@ -35,24 +32,21 @@ export const Container = styled.div<{ containerSize: number }>`
 `;
 
 export const SVG = styled.svg<{ dashAnimation: boolean }>`
+  transform-origin: center center;
   animation: ${buttonSpin}
-    ${({ dashAnimation }) => (dashAnimation ? "1.5s" : "0.9s")} infinite
-    cubic-bezier(0.08, 0.03, 1, 1.04);
+    ${({ dashAnimation }) => (dashAnimation ? "1.5s" : "0.9s")} infinite linear;
   display: block;
   pointer-events: none;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 `;
 
 export const Spinner = styled.circle<{ dashAnimation: boolean }>`
   ${({ dashAnimation }) =>
     dashAnimation
       ? css`
-          animation: ${dash} 2.2s infinite ease-in-out;
+          animation: ${dash} 1.5s infinite ease-in-out forwards;
+          stroke-dasharray: 200;
           stroke-dashoffset: 0;
-          stroke-dasharray: 1, 200;
+          transform-origin: center;
         `
       : `
         stroke-dashoffset: -80;
