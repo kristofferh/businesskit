@@ -62,7 +62,7 @@ export const Loader: React.FC<Props> = ({
 
 Loader.defaultProps = {
   backgroundColor: "#dedede",
-  borderWidth: 6,
+  borderWidth: 5,
   color: "#53b3d4",
   size: 40,
 };

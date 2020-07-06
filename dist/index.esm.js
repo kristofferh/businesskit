@@ -2057,8 +2057,8 @@ tags.forEach(function (tagName) {
   newStyled[tagName] = newStyled(tagName);
 });
 
-var buttonSpin = keyframes(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  from {\n    transform: translate(-50%, -50%) rotate(0deg);\n    transform-origin: center center;\n  }\n\n  to {\n    transform: translate(-50%, -50%) rotate(360deg);\n    transform-origin: center center;\n  }\n"], ["\n  from {\n    transform: translate(-50%, -50%) rotate(0deg);\n    transform-origin: center center;\n  }\n\n  to {\n    transform: translate(-50%, -50%) rotate(360deg);\n    transform-origin: center center;\n  }\n"])));
-var dash = keyframes(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  0% {\n    stroke-dasharray: 1, 200;\n    stroke-dashoffset: 0;\n  }\n  50% {\n    stroke-dasharray: 100;\n    stroke-dashoffset: -35px;\n  }\n  100% {\n    stroke-dasharray: 200;\n    stroke-dashoffset: -100px;\n  }\n"], ["\n  0% {\n    stroke-dasharray: 1, 200;\n    stroke-dashoffset: 0;\n  }\n  50% {\n    stroke-dasharray: 100;\n    stroke-dashoffset: -35px;\n  }\n  100% {\n    stroke-dasharray: 200;\n    stroke-dashoffset: -100px;\n  }\n"])));
+var buttonSpin = keyframes(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  from {\n    transform: rotate(0deg);\n  }\n\n  to {\n    transform: rotate(360deg);\n  }\n"], ["\n  from {\n    transform: rotate(0deg);\n  }\n\n  to {\n    transform: rotate(360deg);\n  }\n"])));
+var dash = keyframes(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  0% {\n    stroke-dashoffset: 180;\n  }\n  50% {\n    stroke-dashoffset: 110;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 180;\n    transform: rotate(360deg);\n  }\n"], ["\n  0% {\n    stroke-dashoffset: 180;\n  }\n  50% {\n    stroke-dashoffset: 110;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 180;\n    transform: rotate(360deg);\n  }\n"])));
 var Container = newStyled.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  position: relative;\n  width: ", "px;\n  height: ", "px;\n"], ["\n  position: relative;\n  width: ", "px;\n  height: ", "px;\n"])), function (_a) {
     var containerSize = _a.containerSize;
     return containerSize;
@@ -2066,7 +2066,7 @@ var Container = newStyled.div(templateObject_3 || (templateObject_3 = __makeTemp
     var containerSize = _a.containerSize;
     return containerSize;
 });
-var SVG = newStyled.svg(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  animation: ", "\n    ", " infinite\n    cubic-bezier(0.08, 0.03, 1, 1.04);\n  display: block;\n  pointer-events: none;\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n"], ["\n  animation: ", "\n    ", " infinite\n    cubic-bezier(0.08, 0.03, 1, 1.04);\n  display: block;\n  pointer-events: none;\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n"])), buttonSpin, function (_a) {
+var SVG = newStyled.svg(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  transform-origin: center center;\n  animation: ", "\n    ", " infinite linear;\n  display: block;\n  pointer-events: none;\n"], ["\n  transform-origin: center center;\n  animation: ", "\n    ", " infinite linear;\n  display: block;\n  pointer-events: none;\n"])), buttonSpin, function (_a) {
     var dashAnimation = _a.dashAnimation;
     return (dashAnimation ? "1.5s" : "0.9s");
 });
@@ -2074,7 +2074,7 @@ var Spinner = newStyled.circle(templateObject_6 || (templateObject_6 = __makeTem
     ";\n  stroke-linecap: round;\n"])), function (_a) {
     var dashAnimation = _a.dashAnimation;
     return dashAnimation
-        ? css(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n          animation: ", " 2.2s infinite ease-in-out;\n          stroke-dashoffset: 0;\n          stroke-dasharray: 1, 200;\n        "], ["\n          animation: ", " 2.2s infinite ease-in-out;\n          stroke-dashoffset: 0;\n          stroke-dasharray: 1, 200;\n        "])), dash) : "\n        stroke-dashoffset: -80;\n        stroke-dasharray: 200;\n        ";
+        ? css(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n          animation: ", " 1.5s infinite ease-in-out forwards;\n          stroke-dasharray: 200;\n          stroke-dashoffset: 0;\n          transform-origin: center;\n        "], ["\n          animation: ", " 1.5s infinite ease-in-out forwards;\n          stroke-dasharray: 200;\n          stroke-dashoffset: 0;\n          transform-origin: center;\n        "])), dash) : "\n        stroke-dashoffset: -80;\n        stroke-dasharray: 200;\n        ";
 });
 var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6;
 
@@ -2088,7 +2088,7 @@ var Loader = function (_a) {
 };
 Loader.defaultProps = {
     backgroundColor: "#dedede",
-    borderWidth: 6,
+    borderWidth: 5,
     color: "#53b3d4",
     size: 40,
 };
