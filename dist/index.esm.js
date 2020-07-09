@@ -1,4 +1,4 @@
-import React, { createContext, createElement, Fragment, forwardRef, Component } from 'react';
+import React, { createContext, createElement, Fragment, forwardRef, Component, useState, useRef, useEffect } from 'react';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -2058,7 +2058,7 @@ tags.forEach(function (tagName) {
 });
 
 var buttonSpin = keyframes(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  from {\n    transform: rotate(0deg);\n  }\n\n  to {\n    transform: rotate(360deg);\n  }\n"], ["\n  from {\n    transform: rotate(0deg);\n  }\n\n  to {\n    transform: rotate(360deg);\n  }\n"])));
-var dash = keyframes(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  0% {\n    stroke-dashoffset: 180;\n  }\n  50% {\n    stroke-dashoffset: 110;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 180;\n    transform: rotate(360deg);\n  }\n"], ["\n  0% {\n    stroke-dashoffset: 180;\n  }\n  50% {\n    stroke-dashoffset: 110;\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: 180;\n    transform: rotate(360deg);\n  }\n"])));
+var dash = function (spinnerLength) { return keyframes(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  0% {\n    stroke-dashoffset: ", ";\n  }\n  50% {\n    stroke-dashoffset: ", ";\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: ", ";\n    transform: rotate(360deg);\n  }\n"], ["\n  0% {\n    stroke-dashoffset: ", ";\n  }\n  50% {\n    stroke-dashoffset: ", ";\n    transform: rotate(135deg);\n  }\n  100% {\n    stroke-dashoffset: ", ";\n    transform: rotate(360deg);\n  }\n"])), spinnerLength * 0.9, spinnerLength * 0.1, spinnerLength * 0.9); };
 var Container = newStyled.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  position: relative;\n  width: ", "px;\n  height: ", "px;\n"], ["\n  position: relative;\n  width: ", "px;\n  height: ", "px;\n"])), function (_a) {
     var containerSize = _a.containerSize;
     return containerSize;
@@ -2072,19 +2072,25 @@ var SVG = newStyled.svg(templateObject_4 || (templateObject_4 = __makeTemplateOb
 });
 var Spinner = newStyled.circle(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  ", ";\n  stroke-linecap: round;\n"], ["\n  ",
     ";\n  stroke-linecap: round;\n"])), function (_a) {
-    var dashAnimation = _a.dashAnimation;
+    var dashAnimation = _a.dashAnimation, spinnerLength = _a.spinnerLength;
     return dashAnimation
-        ? css(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n          animation: ", " 1.5s infinite ease-in-out forwards;\n          stroke-dasharray: 200;\n          stroke-dashoffset: 0;\n          transform-origin: center;\n        "], ["\n          animation: ", " 1.5s infinite ease-in-out forwards;\n          stroke-dasharray: 200;\n          stroke-dashoffset: 0;\n          transform-origin: center;\n        "])), dash) : "\n        stroke-dashoffset: -80;\n        stroke-dasharray: 200;\n        ";
+        ? css(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n          animation: ", " 1.5s infinite ease-in-out forwards;\n          stroke-dasharray: ", ";\n          stroke-dashoffset: 0;\n          transform-origin: center;\n        "], ["\n          animation: ", " 1.5s infinite ease-in-out forwards;\n          stroke-dasharray: ", ";\n          stroke-dashoffset: 0;\n          transform-origin: center;\n        "])), dash(spinnerLength), spinnerLength) : "\n        stroke-dashoffset: " + spinnerLength * 0.75 + ";\n        stroke-dasharray: " + spinnerLength + ";\n        ";
 });
 var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6;
 
 var Loader = function (_a) {
     var color = _a.color, style = _a.style, className = _a.className, size = _a.size, borderWidth = _a.borderWidth, backgroundColor = _a.backgroundColor, showBackground = _a.showBackground, spinnerClassName = _a.spinnerClassName, spinnerStyle = _a.spinnerStyle, showDashAnimation = _a.showDashAnimation;
+    var _b = useState(100), spinnerLength = _b[0], setSpinnerLength = _b[1];
+    var spinnerRef = useRef(null);
+    useEffect(function () {
+        var length = Math.round(spinnerRef.current.getTotalLength());
+        setSpinnerLength(length);
+    }, [size, borderWidth, showDashAnimation, spinnerRef]);
     return (React.createElement(Container, { containerSize: size, style: style, className: className },
-        React.createElement(SVG, { dashAnimation: showDashAnimation, height: size, width: size, viewBox: "0 0 40 40" },
+        React.createElement(SVG, { dashAnimation: showDashAnimation, height: size, width: size, viewBox: "0 0 " + size + " " + size },
             React.createElement("g", { fill: "none" },
                 showBackground ? (React.createElement("circle", { stroke: backgroundColor, strokeWidth: borderWidth, r: (size - borderWidth) / 2, cx: "50%", cy: "50%" })) : null,
-                React.createElement(Spinner, { dashAnimation: showDashAnimation, className: spinnerClassName, style: spinnerStyle, stroke: color, strokeWidth: borderWidth, r: (size - borderWidth) / 2, cx: "50%", cy: "50%" })))));
+                React.createElement(Spinner, { ref: spinnerRef, dashAnimation: showDashAnimation, className: spinnerClassName, style: spinnerStyle, stroke: color, strokeWidth: borderWidth, r: (size - borderWidth) / 2, cx: "50%", cy: "50%", spinnerLength: spinnerLength })))));
 };
 Loader.defaultProps = {
     backgroundColor: "#dedede",

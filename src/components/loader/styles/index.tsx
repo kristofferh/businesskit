@@ -11,16 +11,16 @@ export const buttonSpin = keyframes`
   }
 `;
 
-export const dash = keyframes`
+export const dash = (spinnerLength: number) => keyframes`
   0% {
-    stroke-dashoffset: 180;
+    stroke-dashoffset: ${spinnerLength * 0.9};
   }
   50% {
-    stroke-dashoffset: 110;
+    stroke-dashoffset: ${spinnerLength * 0.1};
     transform: rotate(135deg);
   }
   100% {
-    stroke-dashoffset: 180;
+    stroke-dashoffset: ${spinnerLength * 0.9};
     transform: rotate(360deg);
   }
 `;
@@ -39,18 +39,21 @@ export const SVG = styled.svg<{ dashAnimation: boolean }>`
   pointer-events: none;
 `;
 
-export const Spinner = styled.circle<{ dashAnimation: boolean }>`
-  ${({ dashAnimation }) =>
+export const Spinner = styled.circle<{
+  dashAnimation: boolean;
+  spinnerLength: number;
+}>`
+  ${({ dashAnimation, spinnerLength }) =>
     dashAnimation
       ? css`
-          animation: ${dash} 1.5s infinite ease-in-out forwards;
-          stroke-dasharray: 200;
+          animation: ${dash(spinnerLength)} 1.5s infinite ease-in-out forwards;
+          stroke-dasharray: ${spinnerLength};
           stroke-dashoffset: 0;
           transform-origin: center;
         `
       : `
-        stroke-dashoffset: -80;
-        stroke-dasharray: 200;
+        stroke-dashoffset: ${spinnerLength * 0.75};
+        stroke-dasharray: ${spinnerLength};
         `};
   stroke-linecap: round;
 `;
