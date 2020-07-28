@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader renders and matches the snapshot 1`] = `
+@keyframes animation-0 {
+  from {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.emotion-2 {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+
+.emotion-1 {
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-animation: animation-0 0.9s infinite linear;
+  animation: animation-0 0.9s infinite linear;
+  display: block;
+  pointer-events: none;
+}
+
+.emotion-0 {
+  stroke-dashoffset: 75;
+  stroke-dasharray: 100;
+  stroke-linecap: round;
+}
+
+<div
+  className="emotion-2"
+>
+  <svg
+    className="emotion-1"
+    height={30}
+    viewBox="0 0 30 30"
+    width={30}
+  >
+    <g
+      fill="none"
+    >
+      <circle
+        className="emotion-0"
+        cx="50%"
+        cy="50%"
+        r={12.5}
+        stroke="#ee99ee"
+        strokeWidth={5}
+      />
+    </g>
+  </svg>
+</div>
+`;

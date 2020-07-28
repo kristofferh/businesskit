@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import { SVG, Spinner, Container } from "./styles";
 
 interface Props {
@@ -26,13 +26,26 @@ export const Loader: React.FC<Props> = ({
   spinnerStyle,
   showDashAnimation,
 }) => {
+  const [spinnerLength, setSpinnerLength] = useState(100);
+  const spinnerRef = useRef<SVGCircleElement>(null);
+  useEffect(() => {
+    if (spinnerRef.current) {
+      try {
+        const length = Math.round(spinnerRef.current.getTotalLength());
+        setSpinnerLength(length);
+      } catch (e) {
+        setSpinnerLength(0);
+      }
+    }
+  }, [size, borderWidth, showDashAnimation, spinnerRef]);
+
   return (
     <Container containerSize={size} style={style} className={className}>
       <SVG
         dashAnimation={showDashAnimation}
         height={size}
         width={size}
-        viewBox="0 0 40 40"
+        viewBox={`0 0 ${size} ${size}`}
       >
         <g fill="none">
           {showBackground ? (
@@ -45,6 +58,7 @@ export const Loader: React.FC<Props> = ({
             />
           ) : null}
           <Spinner
+            ref={spinnerRef}
             dashAnimation={showDashAnimation}
             className={spinnerClassName}
             style={spinnerStyle}
@@ -53,6 +67,7 @@ export const Loader: React.FC<Props> = ({
             r={(size - borderWidth) / 2}
             cx="50%"
             cy="50%"
+            spinnerLength={spinnerLength}
           />
         </g>
       </SVG>
