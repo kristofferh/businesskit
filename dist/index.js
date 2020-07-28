@@ -2090,8 +2090,15 @@ var Loader = function (_a) {
     var _b = React.useState(100), spinnerLength = _b[0], setSpinnerLength = _b[1];
     var spinnerRef = React.useRef(null);
     React.useEffect(function () {
-        var length = Math.round(spinnerRef.current.getTotalLength());
-        setSpinnerLength(length);
+        if (spinnerRef.current) {
+            try {
+                var length_1 = Math.round(spinnerRef.current.getTotalLength());
+                setSpinnerLength(length_1);
+            }
+            catch (e) {
+                setSpinnerLength(0);
+            }
+        }
     }, [size, borderWidth, showDashAnimation, spinnerRef]);
     return (React__default.createElement(Container, { containerSize: size, style: style, className: className },
         React__default.createElement(SVG, { dashAnimation: showDashAnimation, height: size, width: size, viewBox: "0 0 " + size + " " + size },
