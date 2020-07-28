@@ -29,8 +29,14 @@ export const Loader: React.FC<Props> = ({
   const [spinnerLength, setSpinnerLength] = useState(100);
   const spinnerRef = useRef<SVGCircleElement>(null);
   useEffect(() => {
-    const length = Math.round(spinnerRef.current.getTotalLength());
-    setSpinnerLength(length);
+    if (spinnerRef.current) {
+      try {
+        const length = Math.round(spinnerRef.current.getTotalLength());
+        setSpinnerLength(length);
+      } catch (e) {
+        setSpinnerLength(0);
+      }
+    }
   }, [size, borderWidth, showDashAnimation, spinnerRef]);
 
   return (
