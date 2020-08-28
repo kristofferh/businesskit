@@ -1,5 +1,5 @@
 {
-  "name": "businesskit",
+  "name": "@kristofferh/businesskit",
   "version": "0.0.1",
   "description": "Another UI kit / component library / design system.",
   "main": "dist/index.min.js",
@@ -29,6 +29,9 @@
     "url": "https://github.com/kristofferh/businesskit/issues"
   },
   "homepage": "https://github.com/kristofferh/businesskit#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/kristofferh"
+  },
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
