@@ -1,6 +1,5 @@
 import React from "react";
-import { Close } from "shared/components/icons";
-import { white } from "shared/utils/styles";
+import { Close } from "../icons/close";
 import { Container, Inner, Remove, RemoveContainer } from "./styles";
 
 const SIZE = 14;
@@ -22,7 +21,7 @@ export const Label: React.FC<Props> = ({
     {isRemovable && (
       <RemoveContainer {...removeProps}>
         <Remove {...removeProps}>
-          <Close width={SIZE} height={SIZE} color={white} />
+          <Close width={SIZE} height={SIZE} />
         </Remove>
       </RemoveContainer>
     )}
