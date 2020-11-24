@@ -26,6 +26,4 @@ export const Story = () => {
   );
 };
 
-Story.story = {
-  name: "Loader",
-};
+Story.storyName = "Loader";

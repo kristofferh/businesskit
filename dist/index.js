@@ -1631,8 +1631,6 @@ function _inheritsLoose(subClass, superClass) {
   subClass.__proto__ = superClass;
 }
 
-var inheritsLoose = _inheritsLoose;
-
 /*
 
 Based off glamor's StyleSheet, thanks Sunil ❤️
@@ -3034,42 +3032,33 @@ var serializeStyles$1 = function serializeStyles(args, registered, mergedProps) 
   };
 };
 
-function css$1() {
-  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
-  return serializeStyles$1(args);
-}
-
 var isBrowser$6 = typeof document !== 'undefined';
+var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
 
-var EmotionCacheContext$1 = React.createContext( // we're doing this to avoid preconstruct's dead code elimination in this one case
+var EmotionCacheContext$1 = /*#__PURE__*/React.createContext( // we're doing this to avoid preconstruct's dead code elimination in this one case
 // because this module is primarily intended for the browser and node
 // but it's also required in react native and similar environments sometimes
 // and we could have a special build just for that
 // but this is much easier and the native packages
 // might use a different theme context in the future anyway
 typeof HTMLElement !== 'undefined' ? createCache$1() : null);
-var ThemeContext$1 = React.createContext({});
+var ThemeContext$1 = /*#__PURE__*/React.createContext({});
 var CacheProvider$1 = EmotionCacheContext$1.Provider;
 
 var withEmotionCache$1 = function withEmotionCache(func) {
   var render = function render(props, ref) {
-    return React.createElement(EmotionCacheContext$1.Consumer, null, function (cache) {
+    return /*#__PURE__*/React.createElement(EmotionCacheContext$1.Consumer, null, function (cache) {
       return func(props, cache, ref);
     });
   }; // $FlowFixMe
 
 
-  return React.forwardRef(render);
+  return /*#__PURE__*/React.forwardRef(render);
 };
 
 if (!isBrowser$6) {
-  var BasicProvider =
-  /*#__PURE__*/
-  function (_React$Component) {
-    inheritsLoose(BasicProvider, _React$Component);
+  var BasicProvider = /*#__PURE__*/function (_React$Component) {
+    _inheritsLoose(BasicProvider, _React$Component);
 
     function BasicProvider(props, context, updater) {
       var _this;
@@ -3084,7 +3073,7 @@ if (!isBrowser$6) {
     var _proto = BasicProvider.prototype;
 
     _proto.render = function render() {
-      return React.createElement(EmotionCacheContext$1.Provider, this.state, this.props.children(this.state.value));
+      return /*#__PURE__*/React.createElement(EmotionCacheContext$1.Provider, this.state, this.props.children(this.state.value));
     };
 
     return BasicProvider;
@@ -3092,9 +3081,9 @@ if (!isBrowser$6) {
 
   withEmotionCache$1 = function withEmotionCache(func) {
     return function (props) {
-      return React.createElement(EmotionCacheContext$1.Consumer, null, function (context) {
+      return /*#__PURE__*/React.createElement(EmotionCacheContext$1.Consumer, null, function (context) {
         if (context === null) {
-          return React.createElement(BasicProvider, null, function (newContext) {
+          return /*#__PURE__*/React.createElement(BasicProvider, null, function (newContext) {
             return func(props, newContext);
           });
         } else {
@@ -3107,7 +3096,6 @@ if (!isBrowser$6) {
 
 var typePropName$1 = '__EMOTION_TYPE_PLEASE_DO_NOT_USE__';
 var labelPropName$1 = '__EMOTION_LABEL_PLEASE_DO_NOT_USE__';
-var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
 
 var render = function render(cache, props, theme, ref) {
   var cssProp = theme === null ? props.css : props.css(theme); // so that using `css` from `emotion` and passing the result to the css prop works
@@ -3150,7 +3138,7 @@ var render = function render(cache, props, theme, ref) {
 
   newProps.ref = ref;
   newProps.className = className;
-  var ele = React.createElement(type, newProps);
+  var ele = /*#__PURE__*/React.createElement(type, newProps);
 
   if (!isBrowser$6 && rules !== undefined) {
     var _ref;
@@ -3163,20 +3151,18 @@ var render = function render(cache, props, theme, ref) {
       next = next.next;
     }
 
-    return React.createElement(React.Fragment, null, React.createElement("style", (_ref = {}, _ref["data-emotion-" + cache.key] = serializedNames, _ref.dangerouslySetInnerHTML = {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", (_ref = {}, _ref["data-emotion-" + cache.key] = serializedNames, _ref.dangerouslySetInnerHTML = {
       __html: rules
     }, _ref.nonce = cache.sheet.nonce, _ref)), ele);
   }
 
   return ele;
-};
+}; // eslint-disable-next-line no-undef
 
-var Emotion$1 =
-/* #__PURE__ */
-withEmotionCache$1(function (props, cache, ref) {
-  // use Context.read for the theme when it's stable
+
+var Emotion$1 = /* #__PURE__ */withEmotionCache$1(function (props, cache, ref) {
   if (typeof props.css === 'function') {
-    return React.createElement(ThemeContext$1.Consumer, null, function (theme) {
+    return /*#__PURE__*/React.createElement(ThemeContext$1.Consumer, null, function (theme) {
       return render(cache, props, theme, ref);
     });
   }
@@ -3186,7 +3172,15 @@ withEmotionCache$1(function (props, cache, ref) {
 
 if (process.env.NODE_ENV !== 'production') {
   Emotion$1.displayName = 'EmotionCssPropInternal';
-} // $FlowFixMe
+}
+
+function css$1() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return serializeStyles$1(args);
+}
 
 var keyframes = function keyframes() {
   var insertable = css$1.apply(void 0, arguments);
@@ -3261,7 +3255,7 @@ function merge(registered, css, className) {
 }
 
 var ClassNames = withEmotionCache$1(function (props, context) {
-  return React.createElement(ThemeContext$1.Consumer, null, function (theme) {
+  return /*#__PURE__*/React.createElement(ThemeContext$1.Consumer, null, function (theme) {
     var rules = '';
     var serializedHashes = '';
     var hasRendered = false;
@@ -3317,7 +3311,7 @@ var ClassNames = withEmotionCache$1(function (props, context) {
     if (!isBrowser$6 && rules.length !== 0) {
       var _ref;
 
-      return React.createElement(React.Fragment, null, React.createElement("style", (_ref = {}, _ref["data-emotion-" + context.key] = serializedHashes.substring(1), _ref.dangerouslySetInnerHTML = {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("style", (_ref = {}, _ref["data-emotion-" + context.key] = serializedHashes.substring(1), _ref.dangerouslySetInnerHTML = {
         __html: rules
       }, _ref.nonce = context.sheet.nonce, _ref)), ele);
     }

@@ -1,16 +1,15 @@
 import styled from "@emotion/styled";
-import { darkGray, fontSizeCaptionTwo, white } from "../styles";
 
-export const Container = styled.span<{ bgColor?: string }>`
+export const Container = styled.span<{ background?: string }>`
   position: relative;
   display: inline-flex;
   align-items: center;
   text-transform: uppercase;
-  background: ${({ bgColor }) => (bgColor ? bgColor : darkGray)};
+  background: ${({ background }) => background};
   border-radius: 2px;
-  color: ${white};
+  color: #fff;
   margin-right: 4px;
-  font-size: ${fontSizeCaptionTwo};
+  font-size: 12px;
   font-weight: bold;
   white-space: nowrap;
   max-width: 100%;

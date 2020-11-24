@@ -1,13 +1,22 @@
 /// <reference types="react" />
 export declare const buttonSpin: import("@emotion/serialize").Keyframes;
 export declare const dash: (spinnerLength: number) => import("@emotion/serialize").Keyframes;
-export declare const Container: import("@emotion/styled-base").StyledComponent<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, {
+export declare const Container: import("@emotion/styled").StyledComponent<{
+    theme?: import("@emotion/react").Theme;
+    as?: import("react").ElementType<any>;
+} & {
     containerSize: number;
-}, object>;
-export declare const SVG: import("@emotion/styled-base").StyledComponent<import("react").SVGProps<SVGSVGElement>, {
+}, import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, {}>;
+export declare const SVG: import("@emotion/styled").StyledComponent<{
+    theme?: import("@emotion/react").Theme;
+    as?: import("react").ElementType<any>;
+} & {
     dashAnimation: boolean;
-}, object>;
-export declare const Spinner: import("@emotion/styled-base").StyledComponent<import("react").SVGProps<SVGCircleElement>, {
+}, import("react").SVGProps<SVGSVGElement>, {}>;
+export declare const Spinner: import("@emotion/styled").StyledComponent<{
+    theme?: import("@emotion/react").Theme;
+    as?: import("react").ElementType<any>;
+} & {
     dashAnimation: boolean;
     spinnerLength: number;
-}, object>;
+}, import("react").SVGProps<SVGCircleElement>, {}>;
