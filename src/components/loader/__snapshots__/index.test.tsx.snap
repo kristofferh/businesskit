@@ -4,12 +4,14 @@ exports[`Loader renders and matches the snapshot 1`] = `
 @keyframes animation-0 {
   from {
     -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
   to {
     -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
   }
@@ -22,8 +24,6 @@ exports[`Loader renders and matches the snapshot 1`] = `
 }
 
 .emotion-1 {
-  -webkit-transform-origin: center center;
-  -ms-transform-origin: center center;
   transform-origin: center center;
   -webkit-animation: animation-0 0.9s infinite linear;
   animation: animation-0 0.9s infinite linear;
