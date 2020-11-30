@@ -1,7 +1,7 @@
 import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import { SVG, Spinner, Container } from "./styles";
 
-interface Props {
+export interface Props {
   backgroundColor?: string;
   borderWidth?: number;
   color?: string;

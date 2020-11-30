@@ -1,5 +1,5 @@
 import React, { CSSProperties } from "react";
-interface Props {
+export interface Props {
     backgroundColor?: string;
     borderWidth?: number;
     color?: string;

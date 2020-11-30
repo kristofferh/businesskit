@@ -1,5 +1,3 @@
-import { addDecorator } from "@storybook/react";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
 import classNames from "classnames";
 import React from "react";
 import { ThemeProvider } from "@emotion/react";
@@ -21,7 +19,6 @@ export const globalTypes = {
 
 const withThemeProvider = (Story, context) => {
   // const theme = getTheme(context.globals.theme);
-  console.log(context);
   return (
     <ThemeProvider theme={theme}>
       <Story {...context} />
@@ -29,11 +26,3 @@ const withThemeProvider = (Story, context) => {
   );
 };
 export const decorators = [withThemeProvider];
-
-// addDecorator((story, context) => {
-//   const theStory = story();
-//   const darkMode = boolean("Dark mode", false);
-
-//   return <div className={classNames("preview", { darkMode })}>{theStory}</div>;
-// });
-// addDecorator(withKnobs);

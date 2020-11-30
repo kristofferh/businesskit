@@ -1,8 +1,9 @@
+/** @jsxImportSource @emotion/react */
 import React from "react";
 import { Close } from "../icons/close";
 import { Container, Inner, Remove, RemoveContainer } from "./styles";
 import { white } from "../../styles/colors";
-import { useTheme } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 
 const SIZE = 14;
 
@@ -31,7 +32,12 @@ export const Badge: React.FC<Props> = ({
       {isRemovable && (
         <RemoveContainer {...removeProps}>
           <Remove {...removeProps}>
-            <Close width={SIZE} height={SIZE} color={removeColor} />
+            <Close
+              width={SIZE}
+              height={SIZE}
+              color={removeColor}
+              css={css({ verticalAlign: "middle", display: "block" })}
+            />
           </Remove>
         </RemoveContainer>
       )}

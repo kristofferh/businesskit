@@ -8,22 +8,22 @@ export const Container = styled.span<{ background?: string }>`
   background: ${({ background }) => background};
   border-radius: 2px;
   color: #fff;
-  margin-right: 4px;
   font-size: 12px;
   font-weight: bold;
   white-space: nowrap;
   max-width: 100%;
+  line-height: 1;
 `;
 
 export const Inner = styled.span`
-  padding: 4px 7px 5px;
+  padding: 4px 8px 4px;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
 export const RemoveContainer = styled.span`
   margin-left: -4px;
-  padding: 4px;
+  padding: 0 4px 0 0;
   cursor: pointer;
   display: inline-flex;
 `;

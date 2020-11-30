@@ -1,29 +1,22 @@
 import React from "react";
-import { Loader } from "./index";
-import { boolean, color as colorFn, number } from "@storybook/addon-knobs";
+import { Loader, Props } from "./index";
+import { Meta, Story } from "@storybook/react";
 
 export default {
   title: "Loader",
   component: Loader,
-};
+  argTypes: {
+    backgroundColor: {
+      control: "color",
+    },
+    color: {
+      control: "color",
+    },
+  },
+} as Meta;
 
-export const Story = () => {
-  const showBackground = boolean("Show background", false);
-  const showDashAnimation = boolean("Show dash animation", false);
-  const color = colorFn("Color", "#000");
-  const backgroundColor = colorFn("Background color", "#dedede");
-  const borderWidth = number("Border width", 5);
-  const size = number("Size", 40);
-  return (
-    <Loader
-      showDashAnimation={showDashAnimation}
-      backgroundColor={backgroundColor}
-      showBackground={showBackground}
-      color={color}
-      size={size}
-      borderWidth={borderWidth}
-    />
-  );
-};
+const LoaderTemplate: Story<Props> = (args) => <Loader {...args} />;
 
-Story.storyName = "Loader";
+export const LoaderStory = LoaderTemplate.bind({});
+
+LoaderStory.storyName = "Loader";

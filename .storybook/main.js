@@ -1,9 +1,7 @@
+const path = require("path");
+const toPath = (_path) => path.join(process.cwd(), _path);
+
 module.exports = {
   stories: ["../src/**/*.stories.*"],
-  addons: [
-    "@storybook/addon-essentials",
-    "@storybook/addon-actions",
-    "@storybook/addon-links",
-    "@storybook/addon-knobs/register",
-  ],
+  addons: ["@storybook/addon-essentials"],
 };
