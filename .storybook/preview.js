@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import React from "react";
-import { ThemeProvider } from "@emotion/react";
-
-import { theme } from "../src/themes";
+import { Provider } from "../src/provider";
+import { Provider as ThemeProvider } from "../src/provider";
+import { theme } from "../src/theme";
 
 export const globalTypes = {
   theme: {
@@ -10,7 +10,7 @@ export const globalTypes = {
     description: "Global theme for components",
     defaultValue: "light",
     toolbar: {
-      icon: "circlehollow",
+      icon: "globe",
       // array of plain string values or MenuItem shape (see below)
       items: ["light", "dark"],
     },
@@ -20,7 +20,7 @@ export const globalTypes = {
 const withThemeProvider = (Story, context) => {
   // const theme = getTheme(context.globals.theme);
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider>
       <Story {...context} />
     </ThemeProvider>
   );

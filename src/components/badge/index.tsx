@@ -1,43 +1,38 @@
 /** @jsxImportSource @emotion/react */
 import React from "react";
-import { Close } from "../icons/close";
-import { Container, Inner, Remove, RemoveContainer } from "./styles";
+import { Container, Inner, Remove, RemoveContainer, CloseIcon } from "./styles";
 import { white } from "../../styles/colors";
-import { css, useTheme } from "@emotion/react";
+import { CSSObject } from "@emotion/react";
 
 const SIZE = 14;
 
-type Variant = "solid" | "outline";
+export type Variant = "solid" | "outline";
 
 export interface Props {
-  bg?: string;
+  className?: string;
   isRemovable?: boolean;
   removeProps?: any;
   removeColor?: string;
   variant?: Variant;
+  sx?: CSSObject;
 }
 
 export const Badge: React.FC<Props> = ({
   children,
-  bg,
   isRemovable,
   removeProps,
-  removeColor = white,
+  removeColor,
+  sx,
+  className,
+  variant,
 }) => {
-  const theme = useTheme();
-  console.log(theme);
   return (
-    <Container background={bg}>
+    <Container className={className} variant={variant} sx={sx}>
       <Inner>{children}</Inner>
       {isRemovable && (
         <RemoveContainer {...removeProps}>
           <Remove {...removeProps}>
-            <Close
-              width={SIZE}
-              height={SIZE}
-              color={removeColor}
-              css={css({ verticalAlign: "middle", display: "block" })}
-            />
+            <CloseIcon width={SIZE} height={SIZE} color={removeColor} />
           </Remove>
         </RemoveContainer>
       )}
@@ -47,6 +42,7 @@ export const Badge: React.FC<Props> = ({
 
 Badge.defaultProps = {
   variant: "solid",
+  removeColor: white,
 };
 
 export default Badge;

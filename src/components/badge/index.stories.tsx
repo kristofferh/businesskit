@@ -6,7 +6,7 @@ export default {
   title: "Badge",
   component: Badge,
   argTypes: {
-    bg: {
+    removeColor: {
       control: "color",
     },
   },
