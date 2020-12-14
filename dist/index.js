@@ -4777,7 +4777,6 @@ var Container$1 = newStyled("span")({
     fontWeight: "bold",
     whiteSpace: "nowrap",
     maxWidth: "100%",
-    lineHeight: 1,
     minHeight: 20,
 }, function (_a) {
     var theme = _a.theme;
@@ -4795,10 +4794,10 @@ var Container$1 = newStyled("span")({
     var sx = _a.sx;
     return (__assign({}, sx));
 });
-var Inner = newStyled.span(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\n  padding: 4px 8px 5px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n"], ["\n  padding: 4px 8px 5px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n"])));
+var Inner = newStyled.span(templateObject_1$1 || (templateObject_1$1 = __makeTemplateObject(["\n  padding: 0 8px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  line-height: 1.1;\n"], ["\n  padding: 0 8px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  line-height: 1.1;\n"])));
 var RemoveContainer = newStyled.span(templateObject_2$1 || (templateObject_2$1 = __makeTemplateObject(["\n  margin-left: -4px;\n  padding: 0 4px 0 0;\n  cursor: pointer;\n  display: inline-flex;\n"], ["\n  margin-left: -4px;\n  padding: 0 4px 0 0;\n  cursor: pointer;\n  display: inline-flex;\n"])));
 var Remove = newStyled.button(templateObject_3$1 || (templateObject_3$1 = __makeTemplateObject(["\n  padding: 0;\n  cursor: pointer;\n  appearance: none;\n  border: 0;\n  background: transparent;\n\n  &:focus {\n    outline: 2px solid rgb(255, 255, 0);\n  }\n"], ["\n  padding: 0;\n  cursor: pointer;\n  appearance: none;\n  border: 0;\n  background: transparent;\n\n  &:focus {\n    outline: 2px solid rgb(255, 255, 0);\n  }\n"])));
-var CloseIcon = newStyled(Close)(templateObject_4$1 || (templateObject_4$1 = __makeTemplateObject(["\n  verticalalign: \"middle\";\n  display: \"block\";\n"], ["\n  verticalalign: \"middle\";\n  display: \"block\";\n"])));
+var CloseIcon = newStyled(Close)(templateObject_4$1 || (templateObject_4$1 = __makeTemplateObject(["\n  vertical-align: middle;\n  display: block;\n"], ["\n  vertical-align: middle;\n  display: block;\n"])));
 var templateObject_1$1, templateObject_2$1, templateObject_3$1, templateObject_4$1;
 
 var white = "#fff";

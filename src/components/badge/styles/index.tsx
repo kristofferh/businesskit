@@ -17,7 +17,6 @@ export const Container = styled("span")<{
     fontWeight: "bold",
     whiteSpace: "nowrap",
     maxWidth: "100%",
-    lineHeight: 1,
     minHeight: 20,
   },
   ({ theme }: any) => ({
@@ -34,9 +33,10 @@ export const Container = styled("span")<{
 );
 
 export const Inner = styled.span`
-  padding: 4px 8px 5px;
+  padding: 0 8px;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.1;
 `;
 
 export const RemoveContainer = styled.span`
@@ -59,6 +59,6 @@ export const Remove = styled.button`
 `;
 
 export const CloseIcon = styled(Close)`
-  verticalalign: "middle";
-  display: "block";
+  vertical-align: middle;
+  display: block;
 `;
