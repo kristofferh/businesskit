@@ -1,14 +1,28 @@
-import { addDecorator } from "@storybook/react";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
 import classNames from "classnames";
 import React from "react";
+import { Provider } from "../src/provider";
+import { Provider as ThemeProvider } from "../src/provider";
+import { theme } from "../src/theme";
 
-import "./preview.css";
+export const globalTypes = {
+  theme: {
+    name: "Theme",
+    description: "Global theme for components",
+    defaultValue: "light",
+    toolbar: {
+      icon: "globe",
+      // array of plain string values or MenuItem shape (see below)
+      items: ["light", "dark"],
+    },
+  },
+};
 
-addDecorator((story, context) => {
-  const theStory = story();
-  const darkMode = boolean("Dark mode", false);
-
-  return <div className={classNames("preview", { darkMode })}>{theStory}</div>;
-});
-addDecorator(withKnobs);
+const withThemeProvider = (Story, context) => {
+  // const theme = getTheme(context.globals.theme);
+  return (
+    <ThemeProvider>
+      <Story {...context} />
+    </ThemeProvider>
+  );
+};
+export const decorators = [withThemeProvider];

@@ -1,23 +1,21 @@
 const path = require("path");
+const toPath = (_path) => path.join(process.cwd(), _path);
 
 module.exports = {
-  stories: ["../src/**/*.stories.js"],
-  addons: [
-    "@storybook/addon-actions",
-    "@storybook/addon-links",
-    "@storybook/addon-knobs/register",
-  ],
+  stories: ["../src/**/*.stories.*"],
+  addons: ["@storybook/addon-essentials"],
   webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      loader: require.resolve("babel-loader"),
-      exclude: /(node_modules)/,
-      options: {
-        presets: ["@babel/preset-react", "@babel/preset-typescript"],
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          "@emotion/css": toPath("node_modules/@emotion/css"),
+          "@emotion/core": toPath("node_modules/@emotion/react"),
+          "emotion-theming": toPath("node_modules/@emotion/react"),
+        },
       },
-    });
-    config.resolve.extensions.push(".ts", ".tsx");
-
-    return config;
+    };
   },
 };
