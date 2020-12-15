@@ -1,9 +1,24 @@
 import styled from "@emotion/styled";
 import { Close } from "../../icons/close";
 
+const gray = (variant: any, theme: any) => {
+  return variant === "outline"
+    ? {
+        backgroundColor: theme.colors.gray[1],
+        color: theme.colors.gray[8],
+        boxShadow: `0 0 0 1px ${theme.colors.gray[3]}`,
+      }
+    : {
+        backgroundColor: theme.colors.gray[7],
+        color: "#fff",
+      };
+};
+
 export const Container = styled("span")<{
   sx?: any;
   variant?: any;
+  theme?: any;
+  colorScheme?: any;
 }>(
   {
     boxSizing: "border-box",
@@ -13,21 +28,20 @@ export const Container = styled("span")<{
     alignItems: "center",
     textTransform: "uppercase",
     borderRadius: 2,
-    color: "#fff",
     fontWeight: "bold",
     whiteSpace: "nowrap",
     maxWidth: "100%",
     minHeight: 20,
   },
-  ({ theme }: any) => ({
-    backgroundColor: theme.colors.gray[7],
-  }),
-  ({ variant }) => {
-    return variant === "outline"
-      ? {
-          border: "1px solid blue",
-        }
-      : {};
+  ({ variant, theme, colorScheme }) => {
+    // TODO: implement color schemes.
+    function scheme(colorScheme: any) {
+      switch (colorScheme) {
+        default:
+          return gray(variant, theme);
+      }
+    }
+    return scheme(colorScheme);
   },
   ({ sx }) => ({ ...sx })
 );

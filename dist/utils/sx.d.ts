@@ -3,4 +3,4 @@ export declare type SxProps = {
     sx?: SystemStyleObject;
     theme?: Object;
 };
-export declare const sx: ({ sx, theme }: SxProps) => import("@styled-system/css").CSSObject;
+export declare const sx: ({ sx, theme }: SxProps) => any;
