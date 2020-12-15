@@ -30,6 +30,5 @@ export const grays = [
 export const colors = {
   text: gray9,
   background: white,
-  primary: "#ff0000",
   gray: grays,
 };

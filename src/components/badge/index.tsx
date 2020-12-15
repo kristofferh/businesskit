@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import React from "react";
 import { Container, Inner, Remove, RemoveContainer, CloseIcon } from "./styles";
 import { white } from "../../styles/colors";
@@ -7,6 +6,7 @@ import { CSSObject } from "@emotion/react";
 const SIZE = 14;
 
 export type Variant = "solid" | "outline";
+export type ColorScheme = "red" | "blue" | "green" | "gray";
 
 export interface Props {
   className?: string;
@@ -15,6 +15,7 @@ export interface Props {
   removeColor?: string;
   variant?: Variant;
   sx?: CSSObject;
+  colorScheme?: ColorScheme;
 }
 
 export const Badge: React.FC<Props> = ({
@@ -25,9 +26,15 @@ export const Badge: React.FC<Props> = ({
   sx,
   className,
   variant,
+  colorScheme,
 }) => {
   return (
-    <Container className={className} variant={variant} sx={sx}>
+    <Container
+      className={className}
+      variant={variant}
+      colorScheme={colorScheme}
+      sx={sx}
+    >
       <Inner>{children}</Inner>
       {isRemovable && (
         <RemoveContainer {...removeProps}>

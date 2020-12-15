@@ -5,6 +5,8 @@ export declare const Container: import("@emotion/styled").StyledComponent<{
 } & {
     sx?: any;
     variant?: any;
+    theme?: any;
+    colorScheme?: any;
 }, import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>, {}>;
 export declare const Inner: import("@emotion/styled").StyledComponent<{
     theme?: import("@emotion/react").Theme;

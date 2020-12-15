@@ -65,10 +65,6 @@
   },
   "dependencies": {
     "@emotion/react": "^11.1.1",
-    "@emotion/styled": "^11.0.0",
-    "@styled-system/css": "^5.1.5",
-    "@types/styled-system": "^5.1.10",
-    "@types/styled-system__css": "^5.0.14",
-    "styled-system": "^5.1.5"
+    "@emotion/styled": "^11.0.0"
   }
 }

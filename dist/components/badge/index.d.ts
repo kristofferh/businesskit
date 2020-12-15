@@ -1,7 +1,7 @@
-/** @jsxImportSource @emotion/react */
 import React from "react";
 import { CSSObject } from "@emotion/react";
 export declare type Variant = "solid" | "outline";
+export declare type ColorScheme = "red" | "blue" | "green" | "gray";
 export interface Props {
     className?: string;
     isRemovable?: boolean;
@@ -9,6 +9,7 @@ export interface Props {
     removeColor?: string;
     variant?: Variant;
     sx?: CSSObject;
+    colorScheme?: ColorScheme;
 }
 export declare const Badge: React.FC<Props>;
 export default Badge;

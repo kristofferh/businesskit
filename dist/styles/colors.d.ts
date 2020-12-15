@@ -14,6 +14,5 @@ export declare const grays: string[];
 export declare const colors: {
     text: string;
     background: string;
-    primary: string;
     gray: string[];
 };
