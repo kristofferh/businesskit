@@ -1,6 +1,6 @@
 {
   "name": "@kristofferh/businesskit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Another UI kit / component library / design system.",
   "main": "dist/index.min.js",
   "module": "dist/index.esm.min.js",
